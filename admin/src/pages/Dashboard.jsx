@@ -29,7 +29,7 @@ const ProductListPage = () => {
     setStatusFilter(selectedStatus);
   };
   const handleAddProduct = () => {
-    navigate('/create-product'); // <-- navigate to login page
+    navigate('/create-product');
   };
 
   useEffect(() => {
