@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // <-- import useNavigate
+import { useNavigate } from 'react-router-dom'; 
 import ProductService from '../services/ProductService';
 import ProductCard from '../components/UserProductCard';
 
@@ -7,7 +7,7 @@ const ProductListPage = () => {
   const [products, setProducts] = useState([]);
   const [statusFilter, setStatusFilter] = useState('All'); 
   const [sortedProducts, setSortedProducts] = useState([]);
-  const navigate = useNavigate(); // <-- initialize navigate
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     ProductService.getAllProducts().then((data) => {
@@ -33,7 +33,7 @@ const ProductListPage = () => {
   }, [statusFilter, products]);
 
   const handleAddProduct = () => {
-    navigate('/login'); // <-- navigate to login page
+    navigate('/login');
   };
 
   return (
