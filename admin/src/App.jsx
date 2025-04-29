@@ -6,7 +6,6 @@ import RegisterPage from "./pages/RegisterPage";
 import CreateProductPage from "./pages/CreateProductPage";
 import ProductListPage from "./pages/ProductListPage";
 import AdminDashboard from "./pages/Dashboard";
-
 import Navbar from "./components/NavBar";
 import AdminNavbar from "./components/AdminNavbar";
 
