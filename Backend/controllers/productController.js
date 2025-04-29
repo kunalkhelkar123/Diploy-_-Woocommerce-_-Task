@@ -28,16 +28,16 @@ const upload = multer({ storage: storage }).single("image");
 const createProductHandler = async (req, res) => {
   upload(req, res, async (err) => {
     if (err) {
-      console.error('❌ Image upload error:', err);
+      console.error(' Image upload error:', err);
       return res.status(500).json({ message: "Image upload failed: " + err.message });
     }
 
     const { name, description, price } = req.body;
-    const userId = req.user.userId; // user from auth middleware
+    const userId = req.user.userId; 
     const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
 
     try {
-      // 1. Create product locally first
+
       const productId = await createProduct(
         userId,
         name,
@@ -46,8 +46,6 @@ const createProductHandler = async (req, res) => {
         imageUrl,
         "Created Locally"
       );
-
-      // 2. Sync with WooCommerce
       const wooProduct = await createWooProduct({ name, description, price, imageUrl });
 
       if (wooProduct && wooProduct.id) {
@@ -58,7 +56,7 @@ const createProductHandler = async (req, res) => {
 
       res.status(201).json({ message: "Product created and sync attempt complete." });
     } catch (error) {
-      console.error('❌ Product creation error:', error);
+      console.error(' Product creation error:', error);
       res.status(500).json({ message: error.message || "Server Error" });
     }
   });
